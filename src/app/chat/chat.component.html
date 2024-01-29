@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="col-md-12 text-center">
+        <h1>Sendwo AI Bot</h1><hr>
+        <ng-container *ngFor="let message of messages">
+            <div class="message" [ngClass]="{'from':message.author==='bot', 'to':message.author==='user'}">{{message.content}}</div>
+        </ng-container>
+    </div>
+    <div class="col-md-12 text-center">
+        <label *ngIf="messages.length==0; else dialoginfo" for="nameField">Your Messages</label>
+        <input [(ngModel)]="value" (keyup.enter)="sendMessage()" type="text" class="form-control">
+        <button class="btn btn-primary" (click)="sendMessage()">Ask SWAI</button>
+        <ng-container *ngIf="messages.length > 0"><span [className]="'float-right'">Total Messages: {{messages.length}}
+        </span></ng-container>
+
+    </div>
+</div>
